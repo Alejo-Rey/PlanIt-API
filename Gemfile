@@ -36,7 +36,7 @@ gem "thruster", require: false
 gem "rack-cors"
 
 # https://graphql-ruby.org/
-gem 'graphql', '~> 2.4', '>= 2.4.3'
+gem 'graphql', '~> 2.4'
 
 
 
