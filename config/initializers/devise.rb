@@ -254,6 +254,17 @@ Devise.setup do |config|
   # only the current scope. By default, Devise signs out all scopes.
   # config.sign_out_all_scopes = true
 
+  config.jwt do |jwt|
+    jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
+    jwt.dispatch_requests = [
+      ['POST', %r{^/graphql$}]
+    ]
+    jwt.revocation_requests = [
+      ['POST', %r{^/graphql$}]
+    ]
+    # jwt.expiration_time = 1.day.to_i
+    jwt.expiration_time = 30.minutes.to_i
+  end
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
   # :html should redirect to the sign in page when the user does not have
