@@ -157,7 +157,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -255,7 +255,7 @@ Devise.setup do |config|
   # config.sign_out_all_scopes = true
 
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
+    jwt.secret = Rails.application.credentials.devise_jwt_secret_key!  || ENV['DEVISE_JWT_SECRET_KEY']
     jwt.dispatch_requests = [
       ['POST', %r{^/graphql$}]
     ]
@@ -263,7 +263,7 @@ Devise.setup do |config|
       ['POST', %r{^/graphql$}]
     ]
     # jwt.expiration_time = 1.day.to_i
-    jwt.expiration_time = 30.minutes.to_i
+    jwt.expiration_time = 1.day.to_i
   end
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
