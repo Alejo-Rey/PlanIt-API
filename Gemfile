@@ -39,6 +39,11 @@ gem "rack-cors"
 gem 'graphql', '~> 2.4', '>= 2.4.3'
 
 
+# authentication
+gem 'devise', '~> 4.2'
+gem 'devise-jwt', '~> 0.12.1'
+gem 'jsonapi-serializer', '~> 2.2'
+
 
 
 group :development, :test do
